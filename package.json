@@ -1,0 +1,45 @@
+{
+  "name": "MessageBoard",
+  "version": "1.0.0",
+  "description": "Service to manage the message board",
+  "main": "index.js",
+  "scripts": {
+    "test": "MONGO_DB_URL=mongodb://localhost/test grunt",
+    "lint": "node node_modules/.bin/eslint --quiet ./. && echo Lint Passed.",
+    "start": "node index.js",
+    "precommit": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/utkarshdbodake/MessageBoard"
+  },
+  "keywords": [
+    "MessageBoard"
+  ],
+  "author": "Utkarsh Bodake",
+  "license": "ISC",
+  "eslint": {
+    "configFile": ".eslintrc",
+    "ignorePath": ".eslintignore"
+  },
+  "dependencies": {
+    "bluebird": "3.5.0",
+    "boom": "4.1.0",
+    "hapi": "16.1.1",
+    "joi": "10.4.1",
+    "lodash": "4.17.4",
+    "mongoose": "4.9.4"
+  },
+  "devDependencies": {
+    "eslint": "3.15.0",
+    "grunt": "1.0.1",
+    "grunt-eslint": "19.0.0",
+    "grunt-mocha-istanbul": "5.0.2",
+    "grunt-mocha-test": "0.13.2",
+    "istanbul": "0.4.5",
+    "mocha": "3.2.0",
+    "rewire": "2.5.2",
+    "should": "11.2.0",
+    "simple-mock": "0.7.3"
+  }
+}
