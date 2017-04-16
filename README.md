@@ -4,10 +4,12 @@ A web-server (with HTTP APIs) that acts as a public message board.
 -----
 # Steps to run:
 1. Install Node.js version ```6.9.1```
-2. Go to root directory of *MessageBoard* project.
-3. On command line type ```npm install``` and hit enter.
-4. On command line type ```npm start``` and hit enter.
-- Yahoo your server is up and running on default port ```5000```.
+2. Install MongoDB Community Server edition version ```3.4.3```.
+3. On command line type ```mongod``` and hit enter. (Will run Mongo on its default port ```27017```)
+4. Go to root directory of *MessageBoard* project.
+5. On command line type ```npm install``` and hit enter.
+6. On command line type ```npm start``` and hit enter.
+- Yahoo 🎉 our server is up and running on default port ```5000```.
 - Go through below docs, to understand the ```Entities``` and supported ```API```'s.
 - Optional: You can also run test cases by ```npm test```.
 -----
@@ -88,7 +90,7 @@ A web-server (with HTTP APIs) that acts as a public message board.
     curl -X GET http://localhost:5000/message-board/api/v1/public/messages?pageSize=5&direction=forward&timeCursor=1492313318225
     ```
 - Why bother with **pagination**? --> For limited messages it would be fine. But as the messages grow on our public board, it would not make sense to send hundreds or thoudsands of messages, this would in turn **slow the response time** of our HTTP endpoint and also **consume lot of client memory**.
-- Why cursor is used as **timestamp** instead of **messageId**? --> Well we could have exploited the Mongo ObjectID as it is sorted with time. But we want out application code to be agnostic with the DB which we are using. If in future, we tend to migrate to some other DB, we would get into trouble. That's why cursor is based upon **timestamp**.
+- Why cursor is used as **timestamp** instead of **messageId**? --> Well we could have exploited the Mongo ObjectID as it is sorted with time. But we want our application code to be agnostic with the DB which we are using. If in future, we tend to migrate to some other DB, we would get into trouble. That's why cursor is based upon **timestamp**.
 - Known limitations:
     ```sh
     1. As our number of concurrent users grow, we would be having multiple concurrent messages per second.
@@ -97,7 +99,7 @@ A web-server (with HTTP APIs) that acts as a public message board.
        still it can happen in highly concurrent env!)
     
     2. Above issue can be mitigated, by providing "messageId" along with "timeCursor" to pinpoint the exact
-      record from where pagination will start. Though this is not implemented in current implmentation.
+      record from where pagination will start. Though this is not implemented in current implementation.
     
     3. For sorting, we are relying on Mongos sort, so its not stable sort. ie. Messages with same timestamp
     (arriving at same ms) can be out of order within them.
@@ -149,7 +151,7 @@ A web-server (with HTTP APIs) that acts as a public message board.
     - Example using cURL:
     curl -X DELETE http://localhost:5000/message-board/api/v1/public/messages/58f306ae33bdb54f3b3972f2 -H 'secret-token: sdb~5$43@2ed*cv&4=32ew#fv'
     ```
-- Cases such as deleting message which does not exist, client who does not posses the secreToken is deleting, etc are taken care of.
+- Cases such as deleting message which does not exist, client who does not posses the secretToken is deleting, etc are taken care of.
 
 -----
 # Test cases
