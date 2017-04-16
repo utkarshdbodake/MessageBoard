@@ -9,7 +9,7 @@ A web-server (with HTTP APIs) that acts as a public message board.
 4. Go to root directory of *MessageBoard* project.
 5. On command line type ```npm install``` and hit enter.
 6. On command line type ```npm start``` and hit enter.
-- Yahoo 🎉 your server is up and running on default port ```5000```.
+- Yahoo 🎉 our server is up and running on default port ```5000```.
 - Go through below docs, to understand the ```Entities``` and supported ```API```'s.
 - Optional: You can also run test cases by ```npm test```.
 -----
